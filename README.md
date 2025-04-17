@@ -145,7 +145,7 @@ Below is a sample XSD element with both cardinality and enumeration:
 
 ### Flowchart
 
-![Generation Flow](assets/constraintcrafter-flowchart.png)
+![Generation Flow](assets/ConstraintCrafter-flowchart.png)
 
 ### Who Benefits?
 
