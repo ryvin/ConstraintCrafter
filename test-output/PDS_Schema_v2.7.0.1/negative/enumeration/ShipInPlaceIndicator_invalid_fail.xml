@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'ShipInPlaceIndicator' defined at schema line 8641 -->
-<root>
-  <ShipInPlaceIndicator>INVALID</ShipInPlaceIndicator>
-</root>

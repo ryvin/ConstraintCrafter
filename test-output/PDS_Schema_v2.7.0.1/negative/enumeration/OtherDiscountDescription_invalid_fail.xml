@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'OtherDiscountDescription' defined at schema line 6230 -->
-<root>
-  <OtherDiscountDescription>INVALID</OtherDiscountDescription>
-</root>

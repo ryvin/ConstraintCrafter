@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'ScheduleDateDescription' defined at schema line 9090 -->
-<root>
-  <ScheduleDateDescription>INVALID</ScheduleDateDescription>
-</root>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: above maxOccurs=1 for element 'AttachmentDate' defined at schema line 758 -->
-<root>
-  <AttachmentDate/>
-  <AttachmentDate/>
-</root>

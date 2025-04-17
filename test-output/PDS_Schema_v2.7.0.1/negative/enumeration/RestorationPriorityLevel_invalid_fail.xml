@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'RestorationPriorityLevel' defined at schema line 9296 -->
-<root>
-  <RestorationPriorityLevel>INVALID</RestorationPriorityLevel>
-</root>

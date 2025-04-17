@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: below minOccurs=2 for element 'LineItemList' defined at schema line 4271 -->
-<root>
-  <LineItemList/>
-</root>

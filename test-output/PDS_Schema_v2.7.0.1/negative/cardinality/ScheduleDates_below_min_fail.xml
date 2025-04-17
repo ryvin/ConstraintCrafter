@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: below minOccurs=3 for element 'ScheduleDates' defined at schema line 9084 -->
-<root>
-  <ScheduleDates/>
-  <ScheduleDates/>
-</root>

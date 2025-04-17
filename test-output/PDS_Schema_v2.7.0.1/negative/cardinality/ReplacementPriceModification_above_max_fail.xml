@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: above maxOccurs=1 for element 'ReplacementPriceModification' defined at schema line 4856 -->
-<root>
-  <ReplacementPriceModification/>
-  <ReplacementPriceModification/>
-</root>

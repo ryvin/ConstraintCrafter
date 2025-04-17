@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: above maxOccurs=1 for element 'CountryN3Code' defined at schema line 8230 -->
-<root>
-  <CountryN3Code/>
-  <CountryN3Code/>
-</root>

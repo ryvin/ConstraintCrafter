@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'EmergencyRequestContract' defined at schema line 2710 -->
-<root>
-  <EmergencyRequestContract>INVALID</EmergencyRequestContract>
-</root>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: above maxOccurs=1 for element 'BandwidthOrBitRateUnitOfMeasure' defined at schema line 9322 -->
-<root>
-  <BandwidthOrBitRateUnitOfMeasure/>
-  <BandwidthOrBitRateUnitOfMeasure/>
-</root>

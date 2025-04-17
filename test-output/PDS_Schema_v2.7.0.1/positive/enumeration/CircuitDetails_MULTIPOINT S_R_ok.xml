@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Positive enumeration: value 'MULTIPOINT S/R' for element 'CircuitDetails' defined at schema line 9311 -->
-<root>
-  <CircuitDetails>MULTIPOINT S/R</CircuitDetails>
-</root>

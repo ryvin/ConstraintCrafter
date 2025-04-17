@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'Location' defined at schema line 344 -->
-<root>
-  <Location>INVALID</Location>
-</root>

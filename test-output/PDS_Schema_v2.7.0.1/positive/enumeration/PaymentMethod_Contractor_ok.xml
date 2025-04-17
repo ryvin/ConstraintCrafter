@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Positive enumeration: value 'Contractor' for element 'PaymentMethod' defined at schema line 2580 -->
-<root>
-  <PaymentMethod>Contractor</PaymentMethod>
-</root>

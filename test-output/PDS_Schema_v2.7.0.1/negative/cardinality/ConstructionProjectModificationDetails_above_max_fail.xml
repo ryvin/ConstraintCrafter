@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: above maxOccurs=1 for element 'ConstructionProjectModificationDetails' defined at schema line 6828 -->
-<root>
-  <ConstructionProjectModificationDetails/>
-  <ConstructionProjectModificationDetails/>
-</root>

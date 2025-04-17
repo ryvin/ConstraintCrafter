@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'LineItemType' defined at schema line 4037 -->
-<root>
-  <LineItemType>INVALID</LineItemType>
-</root>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'DraftApproval' defined at schema line 955 -->
-<root>
-  <DraftApproval>INVALID</DraftApproval>
-</root>

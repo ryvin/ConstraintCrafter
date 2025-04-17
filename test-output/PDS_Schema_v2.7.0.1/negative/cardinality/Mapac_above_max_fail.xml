@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: above maxOccurs=1 for element 'Mapac' defined at schema line 6127 -->
-<root>
-  <Mapac/>
-  <Mapac/>
-</root>

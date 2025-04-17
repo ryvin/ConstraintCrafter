@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: above maxOccurs=1 for element 'AttentionLine' defined at schema line 9742 -->
-<root>
-  <AttentionLine/>
-  <AttentionLine/>
-</root>

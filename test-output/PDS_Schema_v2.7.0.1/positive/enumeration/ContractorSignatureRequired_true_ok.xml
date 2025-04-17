@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Positive enumeration: value 'true' for element 'ContractorSignatureRequired' defined at schema line 6956 -->
-<root>
-  <ContractorSignatureRequired>true</ContractorSignatureRequired>
-</root>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Positive enumeration: value 'Carton' for element 'PackingContainer' defined at schema line 3502 -->
-<root>
-  <PackingContainer>Carton</PackingContainer>
-</root>

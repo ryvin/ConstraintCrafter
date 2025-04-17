@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Positive enumeration: value 'FICA Social Security Tax' for element 'TaxDescription' defined at schema line 9151 -->
-<root>
-  <TaxDescription>FICA Social Security Tax</TaxDescription>
-</root>

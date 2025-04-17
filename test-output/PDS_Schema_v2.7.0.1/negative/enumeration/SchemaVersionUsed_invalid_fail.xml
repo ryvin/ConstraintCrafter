@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'SchemaVersionUsed' defined at schema line 25 -->
-<root>
-  <SchemaVersionUsed>INVALID</SchemaVersionUsed>
-</root>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: invalid enumeration for element 'QuantityToBeDelivered' defined at schema line 3062 -->
-<root>
-  <QuantityToBeDelivered>INVALID</QuantityToBeDelivered>
-</root>

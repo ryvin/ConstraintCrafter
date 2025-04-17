@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Failure: above maxOccurs=3 for element 'CDRLDates' defined at schema line 970 -->
-<root>
-  <CDRLDates/>
-  <CDRLDates/>
-  <CDRLDates/>
-  <CDRLDates/>
-</root>
