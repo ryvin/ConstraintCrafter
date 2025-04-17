@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Positive enumeration: value 'Percent of Shipment Value that is Returnable' for element 'SACDescription' defined at schema line 8408 -->
+<root>
+  <SACDescription>Percent of Shipment Value that is Returnable</SACDescription>
+</root>

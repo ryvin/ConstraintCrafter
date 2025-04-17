@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Failure: invalid enumeration for element 'ClauseVariation' defined at schema line 1192 -->
+<root>
+  <ClauseVariation>INVALID</ClauseVariation>
+</root>

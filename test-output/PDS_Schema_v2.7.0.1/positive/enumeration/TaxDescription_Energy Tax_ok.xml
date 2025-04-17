@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Positive enumeration: value 'Energy Tax' for element 'TaxDescription' defined at schema line 9151 -->
+<root>
+  <TaxDescription>Energy Tax</TaxDescription>
+</root>

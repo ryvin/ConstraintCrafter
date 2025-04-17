@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Positive enumeration: value 'false' for element 'EmergencyRequestContract' defined at schema line 2710 -->
+<root>
+  <EmergencyRequestContract>false</EmergencyRequestContract>
+</root>

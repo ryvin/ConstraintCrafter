@@ -1,0 +1,15 @@
+# Ignore Maven build output
+target/
+
+# Ignore test output directory
+test-output/
+
+# IDE files
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+
+# Logs
+*.log

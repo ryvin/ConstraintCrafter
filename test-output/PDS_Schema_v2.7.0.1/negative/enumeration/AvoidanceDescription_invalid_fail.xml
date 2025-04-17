@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Failure: invalid enumeration for element 'AvoidanceDescription' defined at schema line 9240 -->
+<root>
+  <AvoidanceDescription>INVALID</AvoidanceDescription>
+</root>

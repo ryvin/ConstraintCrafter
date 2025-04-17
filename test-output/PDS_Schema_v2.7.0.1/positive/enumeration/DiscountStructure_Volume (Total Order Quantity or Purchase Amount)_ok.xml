@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Positive enumeration: value 'Volume (Total Order Quantity or Purchase Amount)' for element 'DiscountStructure' defined at schema line 7893 -->
+<root>
+  <DiscountStructure>Volume (Total Order Quantity or Purchase Amount)</DiscountStructure>
+</root>
