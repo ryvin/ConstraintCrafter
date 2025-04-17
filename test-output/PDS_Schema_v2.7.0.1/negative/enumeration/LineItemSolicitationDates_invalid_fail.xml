@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Failure: invalid enumeration for element 'LineItemSolicitationDates' defined at schema line 3423 -->
+<root>
+  <LineItemSolicitationDates>INVALID</LineItemSolicitationDates>
+</root>

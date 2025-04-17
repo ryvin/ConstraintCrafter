@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Failure: above maxOccurs=3 for element 'CopyDetails' defined at schema line 2407 -->
+<root>
+  <CopyDetails/>
+  <CopyDetails/>
+  <CopyDetails/>
+  <CopyDetails/>
+</root>

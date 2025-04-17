@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Failure: above maxOccurs=1 for element 'NumberingPlanAreaAndExchange' defined at schema line 9535 -->
+<root>
+  <NumberingPlanAreaAndExchange/>
+  <NumberingPlanAreaAndExchange/>
+</root>

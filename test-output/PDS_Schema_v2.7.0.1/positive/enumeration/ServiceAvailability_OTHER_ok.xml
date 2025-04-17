@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Positive enumeration: value 'OTHER' for element 'ServiceAvailability' defined at schema line 9345 -->
+<root>
+  <ServiceAvailability>OTHER</ServiceAvailability>
+</root>

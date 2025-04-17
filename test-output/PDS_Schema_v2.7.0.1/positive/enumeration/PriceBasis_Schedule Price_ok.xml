@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Positive enumeration: value 'Schedule Price' for element 'PriceBasis' defined at schema line 7792 -->
+<root>
+  <PriceBasis>Schedule Price</PriceBasis>
+</root>

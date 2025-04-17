@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Failure: invalid enumeration for element 'PackagingDescription' defined at schema line 6253 -->
+<root>
+  <PackagingDescription>INVALID</PackagingDescription>
+</root>

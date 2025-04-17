@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Failure: above maxOccurs=1 for element 'ProcurementInstrumentModificationIdentifier' defined at schema line 7654 -->
+<root>
+  <ProcurementInstrumentModificationIdentifier/>
+  <ProcurementInstrumentModificationIdentifier/>
+</root>
