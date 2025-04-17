@@ -1,0 +1,4 @@
+com\example\constraintcrafter\Main.class
+com\example\constraintcrafter\model\ElementInfo.class
+com\example\constraintcrafter\SchemaModel.class
+com\example\constraintcrafter\TestCaseGenerator.class

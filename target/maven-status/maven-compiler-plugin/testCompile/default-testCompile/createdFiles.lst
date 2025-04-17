@@ -1,0 +1,4 @@
+com\example\constraintcrafter\model\ElementInfoTest.class
+com\example\constraintcrafter\SchemaModelTest.class
+com\example\constraintcrafter\EndToEndTest.class
+com\example\constraintcrafter\TestCaseGeneratorTest.class
