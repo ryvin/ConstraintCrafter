@@ -1,5 +1,0 @@
-# Created at 2025-04-17T07:01:12.261
-Boot Manifest-JAR contains absolute paths in classpath 'E:\Code\ConstraintCrafter\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-
