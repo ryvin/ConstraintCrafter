@@ -21,13 +21,13 @@ jobs:
       run: mvn clean verify -B
     - name: Upload Test Reports
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: surefire-reports
         path: target/surefire-reports/
     - name: Upload Shaded JAR
       if: success()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: constraintcrafter-artifact
         path: target/constraintcrafter-*-shaded.jar
