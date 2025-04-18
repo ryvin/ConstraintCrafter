@@ -5,9 +5,19 @@ import com.example.constraintcrafter.model.ElementInfo;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class TestCaseGenerator {
     private static final Logger LOGGER = Logger.getLogger(TestCaseGenerator.class.getName());
@@ -17,6 +27,7 @@ public class TestCaseGenerator {
     private final File negCardDir;
     private final File negEnumDir;
     private List<String> xsdLines;
+    private static final Path TEMPLATE_PATH = Paths.get("src/main/resources/templates/PDS_template.xml");
 
     public TestCaseGenerator(List<ElementInfo> elements, String outDir, String schemaName) {
         this.elements = elements;
@@ -63,50 +74,15 @@ public class TestCaseGenerator {
         int min = info.getMinOccurs();
         int max = info.getMaxOccurs();
         boolean unbounded = max < 0;
-        // positive minOccurs
-        if (xsdLines != null) {
-            File f = new File(posCardDir, name + "_min_occurs_ok.xml");
-            StringBuilder sb = new StringBuilder();
-            sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-            int lineNum = findLineNumber(name);
-            sb.append("<!-- Positive: minOccurs=" + min + " for element '" + name + "' defined at schema line " + lineNum + " -->\n");
-            sb.append("<root>\n");
-            for (int i = 0; i < min; i++) sb.append("  <" + name + "/>\n");
-            sb.append("</root>");
-            Files.writeString(f.toPath(), sb.toString());
-        } else {
-            writeXmlContent(name, min, new File(posCardDir, name + "_min_occurs_ok.xml"));
-        }
-        // positive betweenOccurs
+        int lineNum = findLineNumber(name);
+        File fMin = new File(posCardDir, name + "_min_occurs_ok.xml");
+        writeTemplateCardinality(name, min, fMin, "Positive: minOccurs=" + min + " for element '" + name + "' defined at schema line " + lineNum);
         int betweenCount = (unbounded || max > min) ? min + 1 : min;
-        if (xsdLines != null) {
-            File f = new File(posCardDir, name + "_between_ok.xml");
-            StringBuilder sb = new StringBuilder();
-            sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-            int lineNum = findLineNumber(name);
-            sb.append("<!-- Positive: betweenOccurs=" + betweenCount + " for element '" + name + "' defined at schema line " + lineNum + " -->\n");
-            sb.append("<root>\n");
-            for (int i = 0; i < betweenCount; i++) sb.append("  <" + name + "/>\n");
-            sb.append("</root>");
-            Files.writeString(f.toPath(), sb.toString());
-        } else {
-            writeXmlContent(name, betweenCount, new File(posCardDir, name + "_between_ok.xml"));
-        }
-        // positive maxOccurs (if bounded)
+        File fBetween = new File(posCardDir, name + "_between_ok.xml");
+        writeTemplateCardinality(name, betweenCount, fBetween, "Positive: betweenOccurs=" + betweenCount + " for element '" + name + "' defined at schema line " + lineNum);
         if (!unbounded) {
-            if (xsdLines != null) {
-                File f = new File(posCardDir, name + "_max_occurs_ok.xml");
-                StringBuilder sb = new StringBuilder();
-                sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-                int lineNum = findLineNumber(name);
-                sb.append("<!-- Positive: maxOccurs=" + max + " for element '" + name + "' defined at schema line " + lineNum + " -->\n");
-                sb.append("<root>\n");
-                for (int i = 0; i < max; i++) sb.append("  <" + name + "/>\n");
-                sb.append("</root>");
-                Files.writeString(f.toPath(), sb.toString());
-            } else {
-                writeXmlContent(name, max, new File(posCardDir, name + "_max_occurs_ok.xml"));
-            }
+            File fMax = new File(posCardDir, name + "_max_occurs_ok.xml");
+            writeTemplateCardinality(name, max, fMax, "Positive: maxOccurs=" + max + " for element '" + name + "' defined at schema line " + lineNum);
         }
     }
 
@@ -114,76 +90,81 @@ public class TestCaseGenerator {
         String name = info.getName();
         int min = info.getMinOccurs();
         int max = info.getMaxOccurs();
-        // negative below minOccurs
         int below = Math.max(0, min - 1);
-        File belowFile = new File(negCardDir, name + "_below_min_fail.xml");
-        StringBuilder sb1 = new StringBuilder();
-        sb1.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         int lineNum1 = findLineNumber(name);
-        sb1.append("<!-- Failure: below minOccurs=" + min + " for element '" + name + "' defined at schema line " + lineNum1 + " -->\n");
-        sb1.append("<root>\n");
-        for (int i = 0; i < below; i++) {
-            sb1.append("  <" + name + "/>\n");
-        }
-        sb1.append("</root>");
-        Files.writeString(belowFile.toPath(), sb1.toString());
-        // negative above maxOccurs (if bounded)
+        File fBelow = new File(negCardDir, name + "_below_min_fail.xml");
+        writeTemplateCardinality(name, below, fBelow, "Failure: below minOccurs=" + min + " for element '" + name + "' defined at schema line " + lineNum1);
         if (max >= 0) {
-            File aboveFile = new File(negCardDir, name + "_above_max_fail.xml");
-            StringBuilder sb2 = new StringBuilder();
-            sb2.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
             int lineNum2 = findLineNumber(name);
-            sb2.append("<!-- Failure: above maxOccurs=" + max + " for element '" + name + "' defined at schema line " + lineNum2 + " -->\n");
-            sb2.append("<root>\n");
-            for (int i = 0; i < max + 1; i++) {
-                sb2.append("  <" + name + "/>\n");
-            }
-            sb2.append("</root>");
-            Files.writeString(aboveFile.toPath(), sb2.toString());
+            File fAbove = new File(negCardDir, name + "_above_max_fail.xml");
+            writeTemplateCardinality(name, max + 1, fAbove, "Failure: above maxOccurs=" + max + " for element '" + name + "' defined at schema line " + lineNum2);
         }
     }
 
     private void generatePositiveEnumeration(ElementInfo info) throws IOException {
         String name = info.getName();
         for (String v : info.getEnumValues()) {
-            // sanitize enumeration value for filename
             String safeV = v.replaceAll("[\\\\/:*?\"<>|]", "_");
             File f = new File(posEnumDir, name + "_" + safeV + "_ok.xml");
-            StringBuilder sb = new StringBuilder();
-            sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-            if (xsdLines != null) {
-                int lineNum = findLineNumber(name);
-                sb.append("<!-- Positive enumeration: value '" + v + "' for element '" + name + "' defined at schema line " + lineNum + " -->\n");
-            }
-            sb.append("<root>\n");
-            sb.append("  <" + name + ">" + v + "</" + name + ">\n");
-            sb.append("</root>");
-            Files.writeString(f.toPath(), sb.toString());
+            int lineNum = findLineNumber(name);
+            writeTemplateEnumeration(name, v, f, "Positive enumeration: value '" + v + "' for element '" + name + "' defined at schema line " + lineNum);
         }
     }
 
     private void generateNegativeEnumeration(ElementInfo info) throws IOException {
         String name = info.getName();
-        File f = new File(negEnumDir, name + "_invalid_fail.xml");
-        StringBuilder sb = new StringBuilder();
-        sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         int lineNum = findLineNumber(name);
-        sb.append("<!-- Failure: invalid enumeration for element '" + name + "' defined at schema line " + lineNum + " -->\n");
-        sb.append("<root>\n");
-        sb.append("  <" + name + ">INVALID</" + name + ">\n");
-        sb.append("</root>");
-        Files.writeString(f.toPath(), sb.toString());
+        File f = new File(negEnumDir, name + "_invalid_fail.xml");
+        writeTemplateEnumeration(name, "INVALID", f, "Failure: invalid enumeration for element '" + name + "' defined at schema line " + lineNum);
     }
 
-    private void writeXmlContent(String name, int count, File file) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        sb.append("<root>\n");
-        for (int i = 0; i < count; i++) {
-            sb.append("  <").append(name).append("/>\n");
+    private Document loadTemplate() throws Exception {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setNamespaceAware(true);
+        DocumentBuilder builder = dbf.newDocumentBuilder();
+        return builder.parse(TEMPLATE_PATH.toFile());
+    }
+
+    private void writeDocument(Document doc, File file) throws Exception {
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.setOutputProperty("indent", "yes");
+        transformer.transform(new DOMSource(doc), new StreamResult(file));
+    }
+
+    private void writeTemplateCardinality(String name, int count, File file, String comment) throws IOException {
+        try {
+            Document doc = loadTemplate();
+            Element root = doc.getDocumentElement();
+            NodeList existing = doc.getElementsByTagName(name);
+            while (existing.getLength() > 0) {
+                existing.item(0).getParentNode().removeChild(existing.item(0));
+            }
+            for (int i = 0; i < count; i++) {
+                root.appendChild(doc.createElement(name));
+            }
+            doc.insertBefore(doc.createComment(comment), root);
+            writeDocument(doc, file);
+        } catch (Exception e) {
+            throw new IOException(e);
         }
-        sb.append("</root>");
-        Files.writeString(file.toPath(), sb.toString());
+    }
+
+    private void writeTemplateEnumeration(String name, String value, File file, String comment) throws IOException {
+        try {
+            Document doc = loadTemplate();
+            Element root = doc.getDocumentElement();
+            NodeList existing = doc.getElementsByTagName(name);
+            while (existing.getLength() > 0) {
+                existing.item(0).getParentNode().removeChild(existing.item(0));
+            }
+            Element el = doc.createElement(name);
+            el.setTextContent(value);
+            root.appendChild(el);
+            doc.insertBefore(doc.createComment(comment), root);
+            writeDocument(doc, file);
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
     }
 
     /**

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Template for Procurement Data Standard XML instances -->
+<ProcurementDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="PDS_Schema_v2.7.0.1.xsd">
+  <!-- Mandatory elements -->
+  <SchemaVersionUsed>2.7</SchemaVersionUsed>
+  <ProcurementInstrumentForm>SF 1449</ProcurementInstrumentForm>
+  <!-- TODO: include all other required elements in correct sequence -->
+</ProcurementDocument>
