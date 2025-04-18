@@ -27,9 +27,16 @@ public class TestCaseGenerator {
     private final File negCardDir;
     private final File negEnumDir;
     private List<String> xsdLines;
-    private static final Path TEMPLATE_PATH = Paths.get("src/main/resources/templates/PDS_template.xml");
+    private final Path templatePath;
 
     public TestCaseGenerator(List<ElementInfo> elements, String outDir, String schemaName) {
+        this(elements, outDir, schemaName, (String)null);
+    }
+
+    /**
+     * Load schema and specify custom template path (can be null for default).
+     */
+    public TestCaseGenerator(List<ElementInfo> elements, String outDir, String schemaName, String templatePathArg) {
         this.elements = elements;
         File base = new File(outDir, schemaName);
         this.posCardDir = new File(base, "positive/cardinality");
@@ -37,21 +44,23 @@ public class TestCaseGenerator {
         this.negCardDir = new File(base, "negative/cardinality");
         this.negEnumDir = new File(base, "negative/enumeration");
         this.xsdLines = null;
-        // create directories
-        for (File dir : new File[]{posCardDir, posEnumDir, negCardDir, negEnumDir}) {
-            dir.mkdirs();
-        }
+        for (File dir : new File[]{posCardDir, posEnumDir, negCardDir, negEnumDir}) dir.mkdirs();
         LOGGER.info("Initialized output directory: " + base.getAbsolutePath());
+        this.templatePath = templatePathArg != null ? Paths.get(templatePathArg) : Paths.get("src/main/resources/templates/PDS_template.xml");
     }
 
     /**
      * Create generator by loading schema and deriving schema name from XSD file.
      */
     public TestCaseGenerator(String xsdPath, String outDir) throws Exception {
+        this(xsdPath, outDir, null);
+    }
+
+    public TestCaseGenerator(String xsdPath, String outDir, String templatePathArg) throws Exception {
         this(SchemaModel.load(xsdPath).getElements(),
              outDir,
-             new File(xsdPath).getName().replaceFirst("\\.xsd$", ""));
-        // load schema lines for failure annotations
+             new File(xsdPath).getName().replaceFirst("\\.xsd$", ""),
+             templatePathArg);
         this.xsdLines = Files.readAllLines(Paths.get(xsdPath));
     }
 
@@ -122,7 +131,7 @@ public class TestCaseGenerator {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);
         DocumentBuilder builder = dbf.newDocumentBuilder();
-        return builder.parse(TEMPLATE_PATH.toFile());
+        return builder.parse(templatePath.toFile());
     }
 
     private void writeDocument(Document doc, File file) throws Exception {
